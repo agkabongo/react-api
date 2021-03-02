@@ -29,7 +29,7 @@ function App() {
                 <div className="details">
                     <p>Type: {activities.type}</p>
                     <p>Participants: {activities.participants}</p>
-                    <p>Price: {activities.price}$</p>
+                    <p>Price: {activities.price*10}$</p>
                     <a href={activities.link}>GO</a>
 
                 </div>
