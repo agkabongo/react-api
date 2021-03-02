@@ -6,7 +6,7 @@ function App() {
 
     const [activities,
         setActivities] = useState(null);
-    const apiURL = "http://www.boredapi.com/api/activity/"
+    const apiURL = "https://www.boredapi.com/api/activity/"
     const fetchData = async() => {
         const response = await axios.get(apiURL)
 
