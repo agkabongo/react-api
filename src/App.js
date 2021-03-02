@@ -12,6 +12,7 @@ function App() {
 
         setActivities(response.data)
     }
+    const free = 'free'
     return (
         <div className="App">
             <h1>The Bored API</h1>
@@ -28,7 +29,7 @@ function App() {
                 <div className="details">
                     <p>Type: {activities.type}</p>
                     <p>Participants: {activities.participants}</p>
-                    <p>Price: {activities.price}</p>
+                    <p>Price: {activities.price}$</p>
                     <a href={activities.link}>GO</a>
 
                 </div>
