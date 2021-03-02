@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import axios from "axios";
 import './App.css';
+import React, {useState} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [activities,
+        setActivities] = useState(null);
+    const apiURL = "http://www.boredapi.com/api/activity/"
+    const fetchData = async() => {
+        const response = await axios.get(apiURL)
+
+        setActivities(response.data)
+    }
+    return (
+        <div className="App">
+            <h1>The Bored API</h1>
+            <div>
+                <button className="fetch-button" onClick={fetchData}>
+                Let's find you something to do
+                </button>
+            </div>
+
+            {activities != null && <div className="activities" key={activities.key}>
+
+                <h3>{activities.activity}</h3>
+
+                <div className="details">
+                    <p>Type: {activities.type}</p>
+                    <p>Participants: {activities.participants}</p>
+                    <p>Price: {activities.price}</p>
+                    <a href={activities.link}>GO</a>
+
+                </div>
+            </div>}
+        </div>
+    );
 }
 
 export default App;
